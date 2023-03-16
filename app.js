@@ -194,34 +194,43 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 function findPersonFamily(person, people){
+    let person0 = person.id
     let rents = person.parents
     let spouse = person.currentSpouse
-    let myfolks = []    
-    if (spouse != null || rents != null){
-        let spouseInfo = people.filter(function(person){
-            if (person.id === spouse){
-             let spouseName = person.firstName + " " + person.lastName;
-             myfolks.push(spouseName);   
-            }
-            
-            //return spouseInfo;
-        })
-        
-            if (person.parents.length != 0){
-                let rentName = people.filter(function (person){
-                if (person.id === rents[0] || person.id === rents[1]) {
-                    let folksName = person.firstName + " " + person.lastName;  
-                    myfolks.push(folksName);
-  
-                //return rentName;
-                }
-            })
-            //return true;        
-            }else{
-                alert('Person has no family to display.')
-                }
-        }
-   alert(myfolks);
+    let myfolks = []
+    let siblings = people.filter(function(person){
+        if ((person.parents[1] === rents[1] || person.parents[0] === rents[0]) && person.id != person0) {
+            let sibs = person.firstName + " " + person.lastName
+        alert(sibs);  
+    }
+    
+    })
+    
+    //if (spouse != null || rents != null){
+    //    let spouseInfo = people.filter(function(person){
+    //        if (person.id === spouse){
+    //         let spouseName = person.firstName + " " + person.lastName;
+    //         myfolks.push(spouseName);   
+    //        }
+    //        
+    //        //return spouseInfo;
+    //    })
+    //    
+    //        if (person.parents.length != 0){
+    //            let rentName = people.filter(function (person){
+    //            if (person.id === rents[0] || person.id === rents[1]) {
+    //                let folksName = person.firstName + " " + person.lastName;  
+    //                myfolks.push(folksName);
+  //
+    //            //return rentName;
+    //            }
+    //        })
+    //        //return true;        
+    //        }else{
+    //            alert('Person has no family to display.')
+    //            }
+    //    }
+   //alert(myfolks);
 }
    
 
