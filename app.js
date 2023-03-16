@@ -192,3 +192,64 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+
+function findPersonFamily(person, people){
+    let rents = person.parents
+    if (person.parents.length != 0){
+       let rentName = people.filter(function (person){
+        if (person.id === rents[0] || person.id === rents[1]) {
+          alert(person.firstName);
+          return rentName;
+        }
+            return true;
+        })  
+             
+
+    }
+           
+    }
+    
+      
+
+
+
+
+//function searchByName(people) {
+//  let firstName = promptFor("What is the person's first name?", chars);
+//  let lastName = promptFor("What is the person's last name?", chars);
+//
+//  // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
+//  let foundPerson = people.filter(function (person) {
+//    if (person.firstName === firstName && person.lastName === lastName) {
+//      return true;
+//    }
+//  });
+//  return foundPerson;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+function displayPerson(person) {
+  let personInfo = `First Name: ${person.firstName}\n`;
+  personInfo += `Last Name: ${person.lastName}\n`;
+  personInfo += `Gender: ${person.gender}\n`;
+  personInfo += `DOB: ${person.dob}\n`;
+  personInfo += `Height: ${person.height}\n`;
+  personInfo += `Weight: ${person.weight}\n`;
+  personInfo += `Eye color: ${person.eyeColor}\n`;
+  personInfo += `Occupation: ${person.occupation}\n`;
+  personInfo += `Parents: ${person.parents}\n`;
+  personInfo += `Spouse: ${person.currentSpouse}\n`;
+  //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
+  alert(personInfo);
+}
