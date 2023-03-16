@@ -193,26 +193,37 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-
 function findPersonFamily(person, people){
     let rents = person.parents
-    if (person.parents.length != 0){
-       let rentName = people.filter(function (person){
-        if (person.id === rents[0] || person.id === rents[1]) {
-          alert(person.firstName);
-          return rentName;
+    let spouse = person.currentSpouse
+    let myfolks = []    
+    if (spouse != null || rents != null){
+        let spouseInfo = people.filter(function(person){
+            if (person.id === spouse){
+             let spouseName = person.firstName + " " + person.lastName;
+             myfolks.push(spouseName);   
+            }
+            
+            //return spouseInfo;
+        })
+        
+            if (person.parents.length != 0){
+                let rentName = people.filter(function (person){
+                if (person.id === rents[0] || person.id === rents[1]) {
+                    let folksName = person.firstName + " " + person.lastName;  
+                    myfolks.push(folksName);
+  
+                //return rentName;
+                }
+            })
+            //return true;        
+            }else{
+                alert('Person has no family to display.')
+                }
         }
-            return true;
-        })  
-             
-
-    }
-           
-    }
-    
-      
-
-
+   alert(myfolks);
+}
+   
 
 
 //function searchByName(people) {
@@ -227,15 +238,6 @@ function findPersonFamily(person, people){
 //  });
 //  return foundPerson;
 //}
-
-
-
-
-
-
-
-
-
 
 
 
