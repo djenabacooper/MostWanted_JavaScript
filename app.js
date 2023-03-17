@@ -300,7 +300,8 @@ function searchByTraits(person,people){
        if (searchByOne === 'single'){
         //searchByGender(person, people);
         //searchByHeight(person, people);
-        searchByWeight(person, people)
+        //searchByWeight(person, people);
+        searchByEyeColor(person, people);
         }  
     }
     
@@ -314,7 +315,6 @@ function searchByTraits(person,people){
 //
 //    
 //        let peopleList = []
-//        let eyes = promptFor("What is the person's eye color?", chars);
 //        let occupation = promptFor("What is the person's occupation?", chars);
 //        let foundPeople = people.filter(function (person) {
 //            if(person.gender === gender || person.height === height || person.weight === weight || person.eyeColor === eyes || person.occupation === occupation){
@@ -387,6 +387,23 @@ function searchByWeight(people, person) {
   let weight = parseInt(promptFor("What is the person's weight?", chars));
   let foundPeople = people.filter(function (person) {
     if (person.weight === weight) {
+      let personName = person.firstName + " " + person.lastName;
+      peopleList.push(personName);
+    }
+  });
+  if (peopleList.length === 0) {
+    alert("No one found with that description");
+  } else {
+    alert(peopleList.join("\n"));
+  }
+}
+
+
+function searchByEyeColor(people, person) {
+  let peopleList = [];
+  let eyes = promptFor("What is the person's eye color?", chars);
+  let foundPeople = people.filter(function (person) {
+    if (person.eyeColor === eyes) {
       let personName = person.firstName + " " + person.lastName;
       peopleList.push(personName);
     }
