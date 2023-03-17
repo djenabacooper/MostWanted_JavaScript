@@ -276,43 +276,66 @@ function findPersonDescendants(person, people){
          
         }
         })
-    alert('Children: ' + `\n` + myChildren.join("\n"))
-    return children;  
+        if (myChildren.length === 0){
+            alert("No Children")
+        }else{
+          alert('Children: ' + `\n` + myChildren.join("\n"))
+           
+        }
+    return children; 
     
 
 }    
         
-   
-
-   
-
-
-//function searchByName(people) {
-//  let firstName = promptFor("What is the person's first name?", chars);
-//  let lastName = promptFor("What is the person's last name?", chars);
-//
-//  // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
-//  let foundPerson = people.filter(function (person) {
-//    if (person.firstName === firstName && person.lastName === lastName) {
-//      return true;
-//    }
-//  });
-//  return foundPerson;
-//}
-
-
-
-function displayPerson(person) {
-  let personInfo = `First Name: ${person.firstName}\n`;
-  personInfo += `Last Name: ${person.lastName}\n`;
-  personInfo += `Gender: ${person.gender}\n`;
-  personInfo += `DOB: ${person.dob}\n`;
-  personInfo += `Height: ${person.height}\n`;
-  personInfo += `Weight: ${person.weight}\n`;
-  personInfo += `Eye color: ${person.eyeColor}\n`;
-  personInfo += `Occupation: ${person.occupation}\n`;
-  personInfo += `Parents: ${person.parents}\n`;
-  personInfo += `Spouse: ${person.currentSpouse}\n`;
-  //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
-  alert(personInfo);
+function searchByTraits(people){
+    let peopleList = []
+    let gender = promptFor("What is the person's gender?", chars);
+    let height = parseInt(promptFor("What is the person's height?",chars));
+    let weight = parseInt(promptFor("What is the person's weight?", chars));
+    let eyes = promptFor("What is the person's eye color?", chars);
+    let occupation = promptFor("What is the person's occupation?", chars);
+    let foundPeople = people.filter(function (person) {
+        if(person.gender === gender || person.height === height || person.weight === weight || person.eyeColor === eyes || person.occupation === occupation){
+            let personName = person.firstName + " " + person.lastName;
+            peopleList.push(personName)
+            return true;
+        }
+    })
+    alert(peopleList)
+    return foundPeople;
 }
+
+
+
+
+        //"id": 159819275,
+		//"firstName": "Jasmine",
+		//"lastName": "Bob",
+		//"gender": "female",
+		//"dob": "12/18/1969",
+		//"height": 58,
+		//"weight": 156,
+		//"eyeColor": "blue",
+		//"occupation": "assistant",
+		//"parents": [409574486, 260451248],
+		//"currentSpouse": 951747547
+
+
+function searchByName(people) {
+  let firstName = promptFor("What is the person's first name?", chars);
+  let lastName = promptFor("What is the person's last name?", chars);
+
+  // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
+  let foundPerson = people.filter(function (person) {
+    if (person.firstName === firstName || person.lastName === lastName) {
+      return true;
+    }
+  });
+  return foundPerson;
+}
+
+
+   
+
+
+
