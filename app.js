@@ -298,7 +298,8 @@ function searchByTraits(person,people){
         alert("invalid input")
         }
        if (searchByOne === 'single'){
-        searchByGender(person, people);
+        //searchByGender(person, people);
+        searchByHeight(person, people);
         }  
     }
     
@@ -361,8 +362,26 @@ function searchByGender(people, person){
         }else{
            alert(peopleList.join("\n")) 
         }
+}
+
+
+
+function searchByHeight(people, person) {
+  let peopleList = [];
+  let height = parseInt(promptFor("What is the person's height?", chars));
+  let foundPeople = people.filter(function (person) {
+    if (person.height === height) {
+      let personName = person.firstName + " " + person.lastName;
+      peopleList.push(personName);
     }
-        
+  });
+  if (peopleList.length === 0) {
+    alert("No one found with that description");
+  } else {
+    alert(peopleList.join("\n"));
+  }
+}
+
     
 
     //return searchByGender();
