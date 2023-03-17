@@ -193,9 +193,6 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-
-
-
 function findPersonFamily(person, people){
     let person0 = person.id
     
@@ -205,8 +202,7 @@ function findPersonFamily(person, people){
     findSiblings(person, people);
     findSpouse(person, people);
     return true;
-    
-    
+        
 }
 
 function findSiblings(person, people){
@@ -284,68 +280,78 @@ function findPersonDescendants(person, people){
         }
     return children; 
     
-
 }
 
         
 function searchByTraits(person,people){
     let validInput = false
     while (validInput === false) {
-      let searchByOne = promptFor("Search by a single trait or multiple? Answer 'single' or 'multiple'", chars); 
-      if(searchByOne === 'single' || searchByOne === 'multiple'){
+      let searchOne = promptFor("Search by a single trait or multiple? Answer 'single' or 'multiple'", chars); 
+      if(searchOne === 'single' || searchOne === 'multiple'){
         validInput = true
         }else{
         alert("invalid input")
         }
-       if (searchByOne === 'single'){
-        //searchByGender(person, people);
-        //searchByHeight(person, people);
-        //searchByWeight(person, people);
-        //searchByEyeColor(person, people);
-        searchByOccupation(person, people);
-        }  
+       if (searchOne === 'single'){
+            searchByOne(person, people);
+        }
+        if(searchOne === 'multiple'){
+            searchByAllTraits(person, people);
+        }
+          
     }
     
 }
 
+function searchByAllTraits(people){
+    let peopleList = [];
+    let gender = promptFor("What is the person's gender?", chars);
+    let height = parseInt(promptFor("What is the person's height?", chars));
+    let weight = parseInt(promptFor("What is the person's weight?", chars));
+    let eyes = promptFor("What is the person's eye color?", chars);
+    let occupation = promptFor("What is the person's occupation?", chars);
+    let foundPeople = people.filter(function (person) {
+        if(person.gender === gender && person.height === height && person.weight === weight && person.eyeColor === eyes && person.occupation === occupation){
+            let personName = person.firstName + " " + person.lastName;
+            peopleList.push(personName)
+            return true;
+            }
+        })
+        if (peopleList.length === 0) {
+          alert("No one found with that description");
+        }else{
+          alert(peopleList.join("\n"));
+        }
+
+}
 
 
-//function SearchByOne
-//    
-//    
-//    //else{
-//
-//    
-//        let foundPeople = people.filter(function (person) {
-//            if(person.gender === gender || person.height === height || person.weight === weight || person.eyeColor === eyes || person.occupation === occupation){
-//                let personName = person.firstName + " " + person.lastName;
-//                peopleList.push(personName)
-//                return true;
-//            }
-//        return foundPeople;
-//        })
-//        alert(peopleList)
-//    
-//    }
-//}
-//
-////function searchByOneTrait(people){
-////    let trait = promptFor("What trait would you like to search by? gender, height, weight, eye color, or occupation")
-////    if (trait === 'gender'){
-////        
-//        else if (trait === 'height'){
-//        let foundPeople = people.filter(function(person){
-//            if(person.gender === trait){
-//                let personName = person.firstName + " " + person.lastName;
-//                peopleList.push(personName);
-//                return true;
-//            }
-//        })
-//    }else
-//    
-//}
+function searchByOne(person, people){
+    let trait = promptFor("What trait would you like to search by? gender, height, weight, eye color, or occupation", chars)
+    if (trait === 'gender'){
+       searchByGender(person, people); 
+    }else{
+        if (trait === 'height'){
+            searchByHeight(person, people);
+        }else{
+            if (trait === 'weight'){
+                searchByWeight(person, people);
+            }else{
+                if (trait === 'eye color'){
+                    searchByEyeColor(person, people);
+                }else{
+                    if(trait === 'occupation'){
+                        searchByOccupation(person, people);
+                    }
+                }
+            }
+        }
+    }
 
-function searchByGender(people, person){
+}
+
+
+function searchByGender(people){
     let peopleList = []
     let gender = promptFor("What is the person's gender?", chars);
     let foundPeople = people.filter(function(person){
