@@ -220,14 +220,14 @@ function findSiblings(person, people){
             myfolks.push(sibs);  
         }
         })
-    alert(myfolks.join('\n'));  
+    alert('Siblings:' + `\n` + myfolks.join('\n'));  
     return siblings;         
     }else{
-        alert('no family')
+        alert('No siblings to display')
     }   
        
 }
-  
+
 function findSpouse(person, people){
     let myfolks = []
     let spouse = person.currentSpouse
@@ -238,11 +238,11 @@ function findSpouse(person, people){
              myfolks.push(spouseName);   
             }
         })
-    alert(myfolks.join("\n"));
+    alert('Spouse:' + `\n` + myfolks.join("\n"));
     return spouseInfo;  
 
     }else{
-        alert('no boo thang')
+        alert('No spouse to display')
     }
 }
 
@@ -256,10 +256,10 @@ function findParents(person, people){
             myfolks.push(folksName);
         }
         })
-    alert(myfolks.join("\n"));
+    alert('Parents:' + `\n` +  myfolks.join("\n"));
     return rentName;    
     }else{
-        alert('Person has no family to display.')
+        alert('No parents to display.')
         }
 }
 
