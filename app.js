@@ -199,62 +199,55 @@ function chars(input) {
 function findPersonFamily(person, people){
     let person0 = person.id
     
-    let spouse = person.currentSpouse
+    
     
 
-    findSiblings(person, people);
+    //findSiblings(person, people);
+    findSpouse(person, people);
     return true;
     
     
 }
 
-function findSiblings(person, people){
-    let myfolks = [] 
-    let rents = person.parents
-    //let orgFunction = findPersonFamily(person) 
-    let individual = person.id
-    if (rents.length != 0){
-        let siblings = people.filter(function (person){
-        if ((person.parents[1] === rents[1] || person.parents[0] === rents[0]) && person.id != individual) {
-            let sibs = person.firstName + " " + person.lastName
-            myfolks.push(sibs);  
-        }
+//function findSiblings(person, people){
+//    let myfolks = [] 
+//    let rents = person.parents
+//    //let orgFunction = findPersonFamily(person) 
+//    let individual = person.id
+//    if (rents.length != 0){
+//        let siblings = people.filter(function (person){
+//        if ((person.parents[1] === rents[1] || person.parents[0] === rents[0]) && person.id != individual) {
+//            let sibs = person.firstName + " " + person.lastName
+//            myfolks.push(sibs);  
+//        }
+//        })
+//    alert(myfolks.join('\n'));  
+//    return siblings;         
+//    }else{
+//        alert('no family')
+//    }
+//    
+//       
+//}
+    
+function findSpouse(person, people){
+    let myfolks = []
+    let spouse = person.currentSpouse
+    if (spouse != null){
+        let spouseInfo = people.filter(function(person){
+            if (person.id === spouse){
+             let spouseName = person.firstName + " " + person.lastName;
+             myfolks.push(spouseName);   
+            }
         })
-    alert(myfolks.join('\n'));  
-    return siblings;         
+    alert(myfolks.join("\n"));
+    return spouseInfo;  
+
     }else{
-        alert('no family')
+        alert('no boo thang')
     }
-    
-       
 }
-    
-
-
-     
-  //return orgFunction
-     
-
-           
-    
-   
-
-//findSiblings();
-       
-
-     
-
-
-//
-//            if (spouse != null || rents != null){
-//                let spouseInfo = people.filter(function(person){
-//                    if (person.id === spouse){
-//                     let spouseName = person.firstName + " " + person.lastName;
-//                     myfolks.push(spouseName);   
-//                    }
-//
-//                    //return spouseInfo;
-//                })
+            
 //
 //                        if (person.parents.length != 0){
 //                            let rentName = people.filter(function (person){
