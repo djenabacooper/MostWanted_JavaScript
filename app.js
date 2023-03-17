@@ -301,12 +301,14 @@ function searchByTraits(person,people){
         //searchByGender(person, people);
         //searchByHeight(person, people);
         //searchByWeight(person, people);
-        searchByEyeColor(person, people);
+        //searchByEyeColor(person, people);
+        searchByOccupation(person, people);
         }  
     }
     
+}
 
-}    
+
 
 //function SearchByOne
 //    
@@ -314,8 +316,6 @@ function searchByTraits(person,people){
 //    //else{
 //
 //    
-//        let peopleList = []
-//        let occupation = promptFor("What is the person's occupation?", chars);
 //        let foundPeople = people.filter(function (person) {
 //            if(person.gender === gender || person.height === height || person.weight === weight || person.eyeColor === eyes || person.occupation === occupation){
 //                let personName = person.firstName + " " + person.lastName;
@@ -404,6 +404,22 @@ function searchByEyeColor(people, person) {
   let eyes = promptFor("What is the person's eye color?", chars);
   let foundPeople = people.filter(function (person) {
     if (person.eyeColor === eyes) {
+      let personName = person.firstName + " " + person.lastName;
+      peopleList.push(personName);
+    }
+  });
+  if (peopleList.length === 0) {
+    alert("No one found with that description");
+  } else {
+    alert(peopleList.join("\n"));
+  }
+}
+
+function searchByOccupation(people, person) {
+  let peopleList = [];
+  let occupation = promptFor("What is the person's occupation?", chars);
+  let foundPeople = people.filter(function (person) {
+    if (person.occupation === occupation) {
       let personName = person.firstName + " " + person.lastName;
       peopleList.push(personName);
     }
