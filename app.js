@@ -264,7 +264,23 @@ function findParents(person, people){
 }
 
 
+function findPersonDescendants(person, people){
+    let id = person.id
+    let myChildren = []
+    let children = people.filter(function (person){
+        if (person.parents.length != 0) {
+          if (person.parents[0] === id || person.parents[1] === id) {
+            let childName = person.firstName + " " + person.lastName;
+            myChildren.push(childName);
+          }
+         
+        }
+        })
+    alert('Children: ' + `\n` + myChildren.join("\n"))
+    return children;  
     
+
+}    
         
    
 
