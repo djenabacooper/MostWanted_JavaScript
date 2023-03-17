@@ -193,45 +193,90 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
+
+
+
 function findPersonFamily(person, people){
     let person0 = person.id
-    let rents = person.parents
+    
     let spouse = person.currentSpouse
-    let myfolks = []
-    let siblings = people.filter(function(person){
-        if ((person.parents[1] === rents[1] || person.parents[0] === rents[0]) && person.id != person0) {
+    
+
+    findSiblings(person, people);
+    return true;
+    
+    
+}
+
+function findSiblings(person, people){
+    let myfolks = [] 
+    let rents = person.parents
+    //let orgFunction = findPersonFamily(person) 
+    let individual = person.id
+    if (rents.length != 0){
+        let siblings = people.filter(function (person){
+        if ((person.parents[1] === rents[1] || person.parents[0] === rents[0]) && person.id != individual) {
             let sibs = person.firstName + " " + person.lastName
-        alert(sibs);  
+            myfolks.push(sibs);  
+        }
+        })
+    alert(myfolks.join('\n'));  
+    return siblings;         
+    }else{
+        alert('no family')
     }
     
-    })
-    
-    //if (spouse != null || rents != null){
-    //    let spouseInfo = people.filter(function(person){
-    //        if (person.id === spouse){
-    //         let spouseName = person.firstName + " " + person.lastName;
-    //         myfolks.push(spouseName);   
-    //        }
-    //        
-    //        //return spouseInfo;
-    //    })
-    //    
-    //        if (person.parents.length != 0){
-    //            let rentName = people.filter(function (person){
-    //            if (person.id === rents[0] || person.id === rents[1]) {
-    //                let folksName = person.firstName + " " + person.lastName;  
-    //                myfolks.push(folksName);
-  //
-    //            //return rentName;
-    //            }
-    //        })
-    //        //return true;        
-    //        }else{
-    //            alert('Person has no family to display.')
-    //            }
-    //    }
-   //alert(myfolks);
+       
 }
+    
+
+
+     
+  //return orgFunction
+     
+
+           
+    
+   
+
+//findSiblings();
+       
+
+     
+
+
+//
+//            if (spouse != null || rents != null){
+//                let spouseInfo = people.filter(function(person){
+//                    if (person.id === spouse){
+//                     let spouseName = person.firstName + " " + person.lastName;
+//                     myfolks.push(spouseName);   
+//                    }
+//
+//                    //return spouseInfo;
+//                })
+//
+//                        if (person.parents.length != 0){
+//                            let rentName = people.filter(function (person){
+//                            if (person.id === rents[0] || person.id === rents[1]) {
+//                                let folksName = person.firstName + " " + person.lastName;  
+//                                myfolks.push(folksName);
+//                            
+//                            //return rentName;
+//                            }
+//                        })
+//                        //return true;        
+//                        }
+//                    }
+//                            if (myfolks != null){
+//                                
+//                            }else{
+//                                alert('Person has no family to display.')
+//                                }
+//    
+//        
+//   
+
    
 
 
