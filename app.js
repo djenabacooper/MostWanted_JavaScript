@@ -303,26 +303,31 @@ function searchByTraits(person,people){
     
 }
 
-function searchByAllTraits(people){
-    let peopleList = [];
-    let gender = promptFor("What is the person's gender?", chars);
-    let height = parseInt(promptFor("What is the person's height?", chars));
-    let weight = parseInt(promptFor("What is the person's weight?", chars));
-    let eyes = promptFor("What is the person's eye color?", chars);
-    let occupation = promptFor("What is the person's occupation?", chars);
-    let foundPeople = people.filter(function (person) {
-        if(person.gender === gender && person.height === height && person.weight === weight && person.eyeColor === eyes && person.occupation === occupation){
-            let personName = person.firstName + " " + person.lastName;
-            peopleList.push(personName)
-            return true;
-            }
-        })
-        if (peopleList.length === 0) {
-          alert("No one found with that description");
-        }else{
-          alert(peopleList.join("\n"));
-        }
-
+function searchByAllTraits(people) {
+  let peopleList = [];
+  let gender = promptFor("What is the person's gender?", chars);
+  let height = parseInt(promptFor("What is the person's height?", chars));
+  let weight = parseInt(promptFor("What is the person's weight?", chars));
+  let eyes = promptFor("What is the person's eye color?", chars);
+  let occupation = promptFor("What is the person's occupation?", chars);
+  let foundPeople = people.filter(function (person) {
+    if (
+      person.gender === gender &&
+      person.height === height &&
+      person.weight === weight &&
+      person.eyeColor === eyes &&
+      person.occupation === occupation
+    ) {
+      let personName = person.firstName + " " + person.lastName;
+      peopleList.push(personName);
+      return true;
+    }
+  });
+  if (peopleList.length === 0) {
+    alert("No one found with that description");
+  } else {
+    alert(peopleList.join("\n"));
+  }
 }
 
 
